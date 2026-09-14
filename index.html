@@ -202,16 +202,19 @@ main h2{
   margin: 0 auto;
 }
 .lightbox-close{
+  position: sticky;
+  top: 0;
   display: block;
   margin: 0 0 16px auto;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 13.5px;
   color: var(--paper);
-  background: transparent;
+  background: var(--ink);
   border: 1px solid var(--paper);
   padding: 8px 14px;
   border-radius: 2px;
   cursor: pointer;
+  z-index: 1;
 }
 .lightbox-close:hover{ background: var(--paper); color: var(--ink); }
 .lightbox figure{ margin: 0 0 28px; }
@@ -295,20 +298,6 @@ footer{
       <h2>Projects</h2>
 
       <div class="project">
-        <h3>IPAG ThesisCloud: A Research Hub</h3>
-        <p class="context">A searchable thesis repository built for BPSU's Institute of Public Administration and Governance, centralizing research records for students, faculty, and researchers.</p>
-        <ul>
-          <li>Built a responsive web app with HTML, CSS, and vanilla JavaScript</li>
-          <li>Integrated Firebase Authentication for BPSU email registration, login, verification, and password reset</li>
-          <li>Used Cloud Firestore for thesis metadata, user profiles, admin roles, view counts, and activity logs</li>
-          <li>Built browsing, search, and preview features for academic research outputs</li>
-          <li>Built admin and super-admin tools for managing records, roles, and repository access</li>
-          <li>Implemented Firestore Security Rules and deployed via Firebase Hosting</li>
-        </ul>
-        <p class="stack-line">Firebase, Firestore, JavaScript, HTML/CSS</p>
-      </div>
-
-      <div class="project">
         <h3>Online LGS Tile Center Management System (AR + SMS)</h3>
         <p class="context">A web and Android system for a tile center, modernizing inventory, ordering, and sales monitoring — with an AR module for customers to preview tiles in their own space.</p>
         <ul>
@@ -321,6 +310,20 @@ footer{
         </ul>
         <button class="shots-btn" onclick="document.getElementById('tile-lightbox').classList.add('open')">View screenshots (5)</button>
         <p class="stack-line">Unity, Firebase, PHP, Augmented Reality, SMS</p>
+      </div>
+
+      <div class="project">
+        <h3>IPAG ThesisCloud: A Research Hub</h3>
+        <p class="context">A searchable thesis repository built for BPSU's Institute of Public Administration and Governance, centralizing research records for students, faculty, and researchers.</p>
+        <ul>
+          <li>Built a responsive web app with HTML, CSS, and vanilla JavaScript</li>
+          <li>Integrated Firebase Authentication for BPSU email registration, login, verification, and password reset</li>
+          <li>Used Cloud Firestore for thesis metadata, user profiles, admin roles, view counts, and activity logs</li>
+          <li>Built browsing, search, and preview features for academic research outputs</li>
+          <li>Built admin and super-admin tools for managing records, roles, and repository access</li>
+          <li>Implemented Firestore Security Rules and deployed via Firebase Hosting</li>
+        </ul>
+        <p class="stack-line">Firebase, Firestore, JavaScript, HTML/CSS</p>
       </div>
     </section>
 
@@ -354,7 +357,7 @@ footer{
 
 <div class="lightbox" id="tile-lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close" onclick="document.getElementById('tile-lightbox').classList.remove('open')">Close</button>
+    <button class="lightbox-close" onclick="document.getElementById('tile-lightbox').classList.remove('open')">← Back to portfolio</button>
     <figure><img src="catalog.jpg" alt="Tile catalog with search and filters"><figcaption>Catalog &amp; filters</figcaption></figure>
     <figure><img src="product-detail.jpg" alt="Product detail screen"><figcaption>Product detail</figcaption></figure>
     <figure><img src="ar-preview.jpg" alt="AR floor plotting preview"><figcaption>AR floor plotting</figcaption></figure>
