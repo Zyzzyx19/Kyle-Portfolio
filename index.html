@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kyle Pangilinan — Developer</title>
+<title>Kyle Pangilinan — Software Developer</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
 :root{
   --paper: #FBFAF6;
+  --panel: #F3F0E7;
   --ink: #242320;
   --ink-soft: #57534A;
   --ink-faint: #8A8477;
@@ -18,6 +19,8 @@
 }
 
 *{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
 
 body{
   margin:0;
@@ -29,153 +32,137 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-reduced-motion: reduce){ *{ scroll-behavior: auto !important; } }
+.meta, .num, nav, .btn, .shots-btn{ font-family: 'IBM Plex Sans', sans-serif; }
 
 a{ color: var(--accent); }
 
-.meta{ font-family: 'IBM Plex Sans', sans-serif; }
+.wrap{ max-width: 940px; margin: 0 auto; padding: 0 28px; }
 
-.page{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 72px 32px 96px;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 12px 64px;
-}
-
-@media (max-width: 780px){
-  .page{ grid-template-columns: 1fr; padding: 48px 22px 72px; }
-  aside{ position: static !important; margin-bottom: 48px; }
-}
-
-/* ===== SIDEBAR ===== */
-aside{
+/* ===== NAV ===== */
+nav.top{
   position: sticky;
-  top: 56px;
-  align-self: start;
+  top: 0;
+  z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
 }
-
-aside h1{
-  font-size: 1.7rem;
-  font-weight: 600;
-  line-height: 1.25;
-  margin: 0 0 4px;
-}
-
-.job-title{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14.5px;
-  color: var(--ink-soft);
-  margin: 0 0 22px;
-}
-
-.contact-block{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
-  color: var(--ink-soft);
+.nav-inner{
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 60px;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
-.contact-block a{ color: var(--ink-soft); text-decoration: none; }
-.contact-block a:hover{ color: var(--accent); }
-
-.actions{
-  display: flex;
-  gap: 10px;
-  margin-bottom: 40px;
-}
-.btn{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
-  text-decoration: none;
+.nav-inner .mark{
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
   color: var(--ink);
-  border: 1px solid var(--ink);
-  padding: 8px 15px;
+  text-decoration: none;
+}
+.nav-links{ display: flex; gap: 26px; align-items: center; }
+.nav-links a{
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.nav-links a:hover{ color: var(--accent); }
+.nav-links a.btn{
+  color: var(--paper);
+  background: var(--ink);
+  padding: 7px 14px;
   border-radius: 2px;
 }
-.btn:hover{ background: var(--ink); color: var(--paper); }
+.nav-links a.btn:hover{ background: var(--accent); }
+@media (max-width: 620px){ .nav-links a:not(.btn){ display: none; } }
 
-.side-section{ margin-bottom: 34px; }
-.side-section h2{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 0 0 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--rule);
+/* ===== HERO ===== */
+.hero{
+  padding: 88px 0 72px;
 }
-.skill-line{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
+.hero h1{
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 20px;
+  max-width: 16ch;
+}
+.hero p{
+  max-width: 56ch;
   color: var(--ink-soft);
-  margin: 0 0 10px;
+  font-size: 1.08rem;
+  margin: 0 0 32px;
 }
-.skill-line b{
-  display: block;
-  color: var(--ink);
-  font-weight: 600;
-  margin-bottom: 2px;
+.hero .actions{ display: flex; gap: 12px; flex-wrap: wrap; }
+.btn{
+  font-size: 14px;
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 2px;
+  display: inline-block;
 }
+.btn-primary{ background: var(--ink); color: var(--paper); }
+.btn-primary:hover{ background: var(--accent); }
+.btn-secondary{ background: transparent; color: var(--ink); border: 1px solid var(--ink-faint); }
+.btn-secondary:hover{ border-color: var(--accent); color: var(--accent); }
 
-/* ===== MAIN COLUMN ===== */
-main section{ margin-bottom: 48px; }
-main section:last-child{ margin-bottom: 0; }
+/* ===== SECTION SHELL ===== */
+section.block{ padding: 64px 0; border-top: 1px solid var(--rule); }
+.section-head{ display: flex; align-items: baseline; gap: 14px; margin-bottom: 32px; }
+.num{ font-size: 13px; color: var(--ink-faint); }
+.section-head h2{ font-size: 1.5rem; font-weight: 700; margin: 0; }
 
-main h2{
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 0 0 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
+/* ===== ABOUT ===== */
+.about-text{ max-width: 62ch; color: var(--ink-soft); }
+
+/* ===== SKILLS GRID ===== */
+.skills-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
+@media (max-width: 760px){ .skills-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px){ .skills-grid{ grid-template-columns: 1fr; } }
 
-.profile-text{
-  max-width: 60ch;
-  color: var(--ink-soft);
+.skill-card{
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 18px 18px 20px;
 }
+.skill-card .num{ display: block; margin-bottom: 8px; }
+.skill-card h3{ font-size: 1rem; font-weight: 600; margin: 0 0 8px; }
+.skill-card p{ font-family: 'IBM Plex Sans', sans-serif; font-size: 13.5px; color: var(--ink-soft); margin: 0; }
 
+/* ===== PROJECTS ===== */
 .project{
-  border-left: 2px solid var(--rule);
-  padding-left: 22px;
-  margin-bottom: 34px;
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 28px 30px;
+  margin-bottom: 26px;
 }
 .project:last-child{ margin-bottom: 0; }
+.project .tag{ font-size: 12.5px; color: var(--accent); margin: 0 0 8px; }
+.project h3{ font-size: 1.2rem; font-weight: 700; margin: 0 0 10px; }
+.project .context{ color: var(--ink-soft); max-width: 62ch; margin: 0 0 22px; }
 
-.project h3{
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin: 0 0 6px;
+.feature-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 24px;
+  margin-bottom: 22px;
 }
+@media (max-width: 620px){ .feature-grid{ grid-template-columns: 1fr; } }
+.feature .num{ display: block; margin-bottom: 4px; }
+.feature h4{ font-size: 0.98rem; font-weight: 600; margin: 0 0 4px; }
+.feature p{ font-family: 'IBM Plex Sans', sans-serif; font-size: 13.5px; color: var(--ink-soft); margin: 0; }
 
-.project .context{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 14px;
-  color: var(--ink-faint);
-  margin: 0 0 14px;
-  max-width: 58ch;
-}
-
-.project ul{
-  margin: 0 0 14px;
-  padding-left: 20px;
-  color: var(--ink-soft);
-}
-.project li{ margin-bottom: 6px; }
-.project li:last-child{ margin-bottom: 0; }
-
-.stack-line{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  color: var(--accent);
-  font-style: italic;
-}
+.stack-line{ font-size: 13px; color: var(--accent); font-style: italic; margin: 0 0 14px; }
 
 .shots-btn{
-  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 13.5px;
   color: var(--ink);
   background: var(--accent-soft);
@@ -183,176 +170,167 @@ main h2{
   padding: 9px 16px;
   border-radius: 2px;
   cursor: pointer;
-  margin: 16px 0;
 }
 .shots-btn:hover{ border-color: var(--accent); color: var(--accent); }
 
-.lightbox{
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(20, 18, 14, 0.88);
-  z-index: 100;
-  padding: 40px 20px;
-  overflow-y: auto;
+/* ===== CERTIFICATIONS ===== */
+.cert-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
 }
-.lightbox.open{ display: block; }
-.lightbox-inner{
-  max-width: 720px;
-  margin: 0 auto;
-}
-.lightbox-close{
-  position: sticky;
-  top: 0;
-  display: block;
-  margin: 0 0 16px auto;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13.5px;
-  color: var(--paper);
-  background: var(--ink);
-  border: 1px solid var(--paper);
-  padding: 8px 14px;
-  border-radius: 2px;
-  cursor: pointer;
-  z-index: 1;
-}
-.lightbox-close:hover{ background: var(--paper); color: var(--ink); }
-.lightbox figure{ margin: 0 0 28px; }
-.lightbox img{ width: 100%; height: auto; display: block; border-radius: 2px; }
-.lightbox figcaption{
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 13px;
-  color: var(--paper);
-  margin-top: 8px;
+@media (max-width: 620px){ .cert-grid{ grid-template-columns: 1fr; } }
+.cert-card{
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 16px 18px;
+  font-size: 15px;
 }
 
-.record-list{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.record-list li{
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--rule);
-  font-size: 15.5px;
-}
-.record-list li:last-child{ border-bottom: none; }
-.record-list .meta{ color: var(--ink-faint); font-size: 13px; white-space: nowrap; }
-
-.edu .degree{ font-weight: 600; margin-bottom: 4px; }
+/* ===== EDUCATION ===== */
+.edu .degree{ font-weight: 700; margin-bottom: 4px; font-size: 1.1rem; }
 .edu .school{ color: var(--ink-soft); margin-bottom: 4px; }
 .edu .year{ font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; color: var(--ink-faint); }
 
+/* ===== CONTACT ===== */
+.contact-block h2{ font-size: 1.8rem; font-weight: 700; margin: 0 0 14px; max-width: 18ch; }
+.contact-block p{ color: var(--ink-soft); max-width: 50ch; margin: 0 0 24px; }
+.contact-lines{ font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: var(--ink-soft); display: flex; flex-direction: column; gap: 6px; }
+.contact-lines a{ color: var(--ink); text-decoration: none; font-weight: 500; }
+.contact-lines a:hover{ color: var(--accent); }
+
 footer{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 28px 32px 40px;
+  border-top: 1px solid var(--rule);
+  padding: 26px 0 40px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 12.5px;
   color: var(--ink-faint);
-  border-top: 1px solid var(--rule);
-  line-height: 1.9;
 }
+
+/* ===== LIGHTBOX ===== */
+.lightbox{ display: none; position: fixed; inset: 0; background: rgba(20,18,14,0.9); z-index: 100; padding: 40px 20px; overflow-y: auto; }
+.lightbox.open{ display: block; }
+.lightbox-inner{ max-width: 720px; margin: 0 auto; }
+.lightbox-close{
+  position: sticky; top: 0; display: block; margin: 0 0 16px auto;
+  font-size: 13.5px; color: var(--paper); background: var(--ink);
+  border: 1px solid var(--paper); padding: 8px 14px; border-radius: 2px; cursor: pointer; z-index: 1;
+}
+.lightbox-close:hover{ background: var(--accent); }
+.lightbox figure{ margin: 0 0 28px; }
+.lightbox img{ width: 100%; height: auto; display: block; border-radius: 2px; }
+.lightbox figcaption{ font-size: 13px; color: var(--paper); margin-top: 8px; }
 </style>
 </head>
 <body>
 
-<div class="page">
-
-  <aside>
-    <h1>Kyle H. Pangilinan</h1>
-    <p class="job-title">Software Developer</p>
-
-    <div class="contact-block">
-      <span>Orion, Bataan, Philippines</span>
-      <a href="mailto:kylehpangilinan@gmail.com">kylehpangilinan@gmail.com</a>
-      <a href="tel:+639943721498">+63 994 372 1498</a>
+<nav class="top">
+  <div class="nav-inner">
+    <a href="#home" class="mark">Kyle P.</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certs</a>
+      <a href="https://github.com/Zyzzyx19" target="_blank" rel="noopener" class="btn">GitHub</a>
     </div>
+  </div>
+</nav>
 
+<div class="wrap">
+
+  <header class="hero" id="home">
+    <h1>I build the systems that run behind the scenes.</h1>
+    <p>BSIT graduate from Bataan, Philippines. I've shipped full systems on my own — logins, databases, admin tools, inventory automation, and SMS alerts — using Firebase, PHP, and Unity.</p>
     <div class="actions">
-      <a class="btn" href="https://github.com/Zyzzyx19" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-primary" href="#projects">View my projects ↓</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <section class="block" id="about">
+    <div class="section-head"><span class="num">01</span><h2>About me</h2></div>
+    <p class="about-text">I like taking something people currently do by hand and making it run on its own. Most of what I've built started as a real problem for a real place — a tile store that needed its inventory automated, a university office that needed somewhere to store years of research. What I'm actually good at is the unglamorous middle part: getting authentication right, structuring the data so it doesn't fall apart later, and catching the small details that make an interface feel usable instead of confusing.</p>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="section-head"><span class="num">02</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="num">01</span><h3>Languages</h3><p>HTML, CSS, JavaScript, PHP, C#</p></div>
+      <div class="skill-card"><span class="num">02</span><h3>Front end</h3><p>Bootstrap, responsive design</p></div>
+      <div class="skill-card"><span class="num">03</span><h3>Mobile / AR</h3><p>Unity, Visual Studio 2022, AR SDKs, Android</p></div>
+      <div class="skill-card"><span class="num">04</span><h3>Backend</h3><p>Firebase Auth, Cloud Firestore, Realtime Database</p></div>
+      <div class="skill-card"><span class="num">05</span><h3>Tools</h3><p>Firebase Hosting, Firestore rules, SMS integration, Git</p></div>
+      <div class="skill-card"><span class="num">06</span><h3>AI-assisted dev</h3><p>ChatGPT, Claude, Gemini, Copilot, Blackbox.ai</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <div class="section-head"><span class="num">03</span><h2>Featured projects</h2></div>
+
+    <div class="project">
+      <p class="tag">Inventory &amp; AR system</p>
+      <h3>Online LGS Tile Center Management System (AR + SMS)</h3>
+      <p class="context">A web and Android system for a tile center, modernizing inventory, ordering, and sales monitoring — with an AR module for customers to preview tiles in their own space.</p>
+      <div class="feature-grid">
+        <div class="feature"><span class="num">01</span><h4>Inventory &amp; sales</h4><p>Full admin system for stock monitoring, order tracking, and sales analytics/report exports.</p></div>
+        <div class="feature"><span class="num">02</span><h4>Secure access</h4><p>Firebase Auth with role-based access for customers, admins, and super-admins.</p></div>
+        <div class="feature"><span class="num">03</span><h4>Realtime data</h4><p>Realtime Database for users, tiles, orders, carts, wishlists, ratings, and messages.</p></div>
+        <div class="feature"><span class="num">04</span><h4>AR &amp; SMS</h4><p>AR floor plotting with live tile preview and cost calculation, plus SMS order notifications.</p></div>
+      </div>
+      <p class="stack-line">Unity, Firebase, PHP, Augmented Reality, SMS</p>
+      <button class="shots-btn" onclick="document.getElementById('tile-lightbox').classList.add('open')">View screenshots (5)</button>
     </div>
 
-    <div class="side-section">
-      <h2>Skills</h2>
-      <p class="skill-line"><b>Languages</b>HTML, CSS, JavaScript, PHP, C#</p>
-      <p class="skill-line"><b>Front end</b>Bootstrap, responsive design</p>
-      <p class="skill-line"><b>Mobile / AR</b>Unity, Visual Studio 2022, AR SDKs, Android</p>
-      <p class="skill-line"><b>Backend</b>Firebase Auth, Cloud Firestore, Realtime Database</p>
-      <p class="skill-line"><b>Tools</b>Firebase Hosting, Firestore rules, SMS integration, Git</p>
-      <p class="skill-line"><b>AI-assisted dev</b>ChatGPT, Claude, Gemini, Copilot, Blackbox.ai</p>
+    <div class="project">
+      <p class="tag">Research repository</p>
+      <h3>IPAG ThesisCloud: A Research Hub</h3>
+      <p class="context">A searchable thesis repository built for BPSU's Institute of Public Administration and Governance, centralizing research records for students, faculty, and researchers.</p>
+      <div class="feature-grid">
+        <div class="feature"><span class="num">01</span><h4>Search &amp; browse</h4><p>Browsing, search, and preview features for academic research outputs.</p></div>
+        <div class="feature"><span class="num">02</span><h4>Verified access</h4><p>Firebase Auth for BPSU email registration, login, verification, and password reset.</p></div>
+        <div class="feature"><span class="num">03</span><h4>Structured data</h4><p>Firestore for thesis metadata, user profiles, admin roles, and activity logs.</p></div>
+        <div class="feature"><span class="num">04</span><h4>Admin tools</h4><p>Admin and super-admin tools for managing records, roles, and repository access.</p></div>
+      </div>
+      <p class="stack-line">Firebase, Firestore, JavaScript, HTML/CSS</p>
     </div>
-  </aside>
+  </section>
 
-  <main>
+  <section class="block" id="certifications">
+    <div class="section-head"><span class="num">04</span><h2>Certifications</h2></div>
+    <div class="cert-grid">
+      <div class="cert-card">Certiport — IT Specialist: Software Development</div>
+      <div class="cert-card">Certiport — IT Specialist: Device Configuration &amp; Management</div>
+      <div class="cert-card">Certiport — IT Specialist: Cybersecurity</div>
+      <div class="cert-card">PMI — Project Management Ready</div>
+      <div class="cert-card">Microsoft Office Specialist — Associate (M365 Apps)</div>
+    </div>
+  </section>
 
-    <section id="profile">
-      <h2>Profile</h2>
-      <p class="profile-text">BSIT graduate with hands-on experience building web, mobile, and Firebase-backed systems — authentication, databases, admin dashboards, inventory and order automation, SMS notifications, and reporting tools. Interested in applying software engineering and automation skills to real-world AI and business process improvement projects.</p>
-    </section>
+  <section class="block" id="education">
+    <div class="section-head"><span class="num">05</span><h2>Education</h2></div>
+    <div class="edu">
+      <div class="degree">B.S. Information Technology, Major in Network and Web Development</div>
+      <div class="school">Bataan Peninsula State University — Main Campus</div>
+      <div class="year">Graduated 2026</div>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+  <section class="block contact-block" id="contact">
+    <div class="section-head"><span class="num">06</span><h2>Got something worth building?</h2></div>
+    <p>Send me a message — I'd rather hear about the problem you're solving than fill out another application form.</p>
+    <div class="contact-lines">
+      <a href="mailto:kylehpangilinan@gmail.com">kylehpangilinan@gmail.com</a>
+      <span>+63 994 372 1498</span>
+      <span>Orion, Bataan, Philippines</span>
+    </div>
+  </section>
 
-      <div class="project">
-        <h3>Online LGS Tile Center Management System (AR + SMS)</h3>
-        <p class="context">A web and Android system for a tile center, modernizing inventory, ordering, and sales monitoring — with an AR module for customers to preview tiles in their own space.</p>
-        <ul>
-          <li>Built the web admin system with PHP, HTML, CSS, Bootstrap, and JavaScript</li>
-          <li>Developed the Android customer app with Unity, Visual Studio 2022, Firebase, and AR SDKs</li>
-          <li>Built an AR module for floor plotting, real-time tile preview, quantity estimation, and cost calculation</li>
-          <li>Integrated Firebase Auth with role-based access for customers, admins, and super-admins</li>
-          <li>Used Realtime Database for users, tiles, orders, carts, wishlists, ratings, messages, and inventory</li>
-          <li>Built order tracking, messaging, stock monitoring, SMS notifications, and sales analytics/report exports</li>
-        </ul>
-        <button class="shots-btn" onclick="document.getElementById('tile-lightbox').classList.add('open')">View screenshots (5)</button>
-        <p class="stack-line">Unity, Firebase, PHP, Augmented Reality, SMS</p>
-      </div>
-
-      <div class="project">
-        <h3>IPAG ThesisCloud: A Research Hub</h3>
-        <p class="context">A searchable thesis repository built for BPSU's Institute of Public Administration and Governance, centralizing research records for students, faculty, and researchers.</p>
-        <ul>
-          <li>Built a responsive web app with HTML, CSS, and vanilla JavaScript</li>
-          <li>Integrated Firebase Authentication for BPSU email registration, login, verification, and password reset</li>
-          <li>Used Cloud Firestore for thesis metadata, user profiles, admin roles, view counts, and activity logs</li>
-          <li>Built browsing, search, and preview features for academic research outputs</li>
-          <li>Built admin and super-admin tools for managing records, roles, and repository access</li>
-          <li>Implemented Firestore Security Rules and deployed via Firebase Hosting</li>
-        </ul>
-        <p class="stack-line">Firebase, Firestore, JavaScript, HTML/CSS</p>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <h2>Certifications</h2>
-      <ul class="record-list">
-        <li><span>Certiport — IT Specialist: Software Development</span></li>
-        <li><span>Certiport — IT Specialist: Device Configuration &amp; Management</span></li>
-        <li><span>Certiport — IT Specialist: Cybersecurity</span></li>
-        <li><span>PMI — Project Management Ready</span></li>
-        <li><span>Microsoft Office Specialist — Associate (M365 Apps)</span></li>
-      </ul>
-    </section>
-
-    <section id="education">
-      <h2>Education</h2>
-      <div class="edu">
-        <div class="degree">B.S. Information Technology, Major in Network and Web Development</div>
-        <div class="school">Bataan Peninsula State University — Main Campus</div>
-        <div class="year">Graduated 2026</div>
-      </div>
-    </section>
-
-  </main>
 </div>
 
 <footer>
-  <span>kylehpangilinan@gmail.com</span><br>
-  <span>Orion, Bataan, Philippines</span>
+  <div class="wrap">Kyle H. Pangilinan</div>
 </footer>
 
 <div class="lightbox" id="tile-lightbox">
