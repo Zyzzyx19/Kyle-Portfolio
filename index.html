@@ -174,27 +174,53 @@ main h2{
   font-style: italic;
 }
 
-.shots{
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  margin: 16px 0;
-  padding-bottom: 4px;
-}
-.shots img{
-  height: 220px;
-  width: auto;
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  flex-shrink: 0;
-}
-.shots figure{ margin: 0; }
-.shots figcaption{
+.shots-btn{
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 11.5px;
-  color: var(--ink-faint);
-  margin-top: 6px;
-  text-align: center;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: var(--accent-soft);
+  border: 1px solid var(--rule);
+  padding: 9px 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 16px 0;
+}
+.shots-btn:hover{ border-color: var(--accent); color: var(--accent); }
+
+.lightbox{
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 18, 14, 0.88);
+  z-index: 100;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+.lightbox.open{ display: block; }
+.lightbox-inner{
+  max-width: 720px;
+  margin: 0 auto;
+}
+.lightbox-close{
+  display: block;
+  margin: 0 0 16px auto;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13.5px;
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid var(--paper);
+  padding: 8px 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.lightbox-close:hover{ background: var(--paper); color: var(--ink); }
+.lightbox figure{ margin: 0 0 28px; }
+.lightbox img{ width: 100%; height: auto; display: block; border-radius: 2px; }
+.lightbox figcaption{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 13px;
+  color: var(--paper);
+  margin-top: 8px;
 }
 
 .record-list{
@@ -293,13 +319,7 @@ footer{
           <li>Used Realtime Database for users, tiles, orders, carts, wishlists, ratings, messages, and inventory</li>
           <li>Built order tracking, messaging, stock monitoring, SMS notifications, and sales analytics/report exports</li>
         </ul>
-        <div class="shots">
-          <figure><img src="catalog.jpg" alt="Tile catalog with search and filters"><figcaption>Catalog &amp; filters</figcaption></figure>
-          <figure><img src="product-detail.jpg" alt="Product detail screen"><figcaption>Product detail</figcaption></figure>
-          <figure><img src="ar-preview.jpg" alt="AR floor plotting preview"><figcaption>AR floor plotting</figcaption></figure>
-          <figure><img src="order-history.jpg" alt="Customer order history"><figcaption>Order history</figcaption></figure>
-          <figure><img src="admin-edit.jpg" alt="Admin tile management screen"><figcaption>Admin management</figcaption></figure>
-        </div>
+        <button class="shots-btn" onclick="document.getElementById('tile-lightbox').classList.add('open')">View screenshots (5)</button>
         <p class="stack-line">Unity, Firebase, PHP, Augmented Reality, SMS</p>
       </div>
     </section>
@@ -331,6 +351,25 @@ footer{
   <span>kylehpangilinan@gmail.com</span><br>
   <span>Orion, Bataan, Philippines</span>
 </footer>
+
+<div class="lightbox" id="tile-lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="document.getElementById('tile-lightbox').classList.remove('open')">Close</button>
+    <figure><img src="catalog.jpg" alt="Tile catalog with search and filters"><figcaption>Catalog &amp; filters</figcaption></figure>
+    <figure><img src="product-detail.jpg" alt="Product detail screen"><figcaption>Product detail</figcaption></figure>
+    <figure><img src="ar-preview.jpg" alt="AR floor plotting preview"><figcaption>AR floor plotting</figcaption></figure>
+    <figure><img src="order-history.jpg" alt="Customer order history"><figcaption>Order history</figcaption></figure>
+    <figure><img src="admin-edit.jpg" alt="Admin tile management screen"><figcaption>Admin management</figcaption></figure>
+  </div>
+</div>
+
+<script>
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    document.getElementById('tile-lightbox').classList.remove('open');
+  }
+});
+</script>
 
 </body>
 </html>
