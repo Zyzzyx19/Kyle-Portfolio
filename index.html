@@ -174,6 +174,29 @@ main h2{
   font-style: italic;
 }
 
+.shots{
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin: 16px 0;
+  padding-bottom: 4px;
+}
+.shots img{
+  height: 220px;
+  width: auto;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.shots figure{ margin: 0; }
+.shots figcaption{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  margin-top: 6px;
+  text-align: center;
+}
+
 .record-list{
   list-style: none;
   margin: 0;
@@ -270,6 +293,13 @@ footer{
           <li>Used Realtime Database for users, tiles, orders, carts, wishlists, ratings, messages, and inventory</li>
           <li>Built order tracking, messaging, stock monitoring, SMS notifications, and sales analytics/report exports</li>
         </ul>
+        <div class="shots">
+          <figure><img src="screenshots/catalog.jpg" alt="Tile catalog with search and filters"><figcaption>Catalog &amp; filters</figcaption></figure>
+          <figure><img src="screenshots/product-detail.jpg" alt="Product detail screen"><figcaption>Product detail</figcaption></figure>
+          <figure><img src="screenshots/ar-preview.jpg" alt="AR floor plotting preview"><figcaption>AR floor plotting</figcaption></figure>
+          <figure><img src="screenshots/order-history.jpg" alt="Customer order history"><figcaption>Order history</figcaption></figure>
+          <figure><img src="screenshots/admin-edit.jpg" alt="Admin tile management screen"><figcaption>Admin management</figcaption></figure>
+        </div>
         <p class="stack-line">Unity, Firebase, PHP, Augmented Reality, SMS</p>
       </div>
     </section>
